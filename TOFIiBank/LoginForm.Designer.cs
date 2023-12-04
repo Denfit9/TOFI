@@ -61,15 +61,16 @@
             this.documentNumberError = new System.Windows.Forms.Label();
             this.documentNumberLabel = new System.Windows.Forms.Label();
             this.documentNumberTextBox = new System.Windows.Forms.TextBox();
+            this.sendMailButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // metroSetLabel1
             // 
-            this.metroSetLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.metroSetLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.metroSetLabel1.IsDerivedStyle = true;
-            this.metroSetLabel1.Location = new System.Drawing.Point(504, 27);
+            this.metroSetLabel1.Location = new System.Drawing.Point(504, 12);
             this.metroSetLabel1.Name = "metroSetLabel1";
-            this.metroSetLabel1.Size = new System.Drawing.Size(603, 88);
+            this.metroSetLabel1.Size = new System.Drawing.Size(603, 73);
             this.metroSetLabel1.Style = MetroSet_UI.Enums.Style.Light;
             this.metroSetLabel1.StyleManager = null;
             this.metroSetLabel1.TabIndex = 0;
@@ -82,17 +83,17 @@
             // emailTextBox
             // 
             this.emailTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.emailTextBox.Location = new System.Drawing.Point(613, 154);
+            this.emailTextBox.Location = new System.Drawing.Point(610, 110);
             this.emailTextBox.MaxLength = 100;
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(408, 30);
+            this.emailTextBox.Size = new System.Drawing.Size(411, 30);
             this.emailTextBox.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(608, 126);
+            this.label1.Location = new System.Drawing.Point(605, 82);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 25);
             this.label1.TabIndex = 2;
@@ -103,7 +104,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(608, 212);
+            this.label2.Location = new System.Drawing.Point(605, 160);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 25);
             this.label2.TabIndex = 4;
@@ -113,7 +114,7 @@
             // passwordTextBox
             // 
             this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passwordTextBox.Location = new System.Drawing.Point(613, 240);
+            this.passwordTextBox.Location = new System.Drawing.Point(610, 188);
             this.passwordTextBox.MaxLength = 100;
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
@@ -146,7 +147,7 @@
             this.emailErrorLabel.AutoSize = true;
             this.emailErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.emailErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.emailErrorLabel.Location = new System.Drawing.Point(613, 187);
+            this.emailErrorLabel.Location = new System.Drawing.Point(610, 143);
             this.emailErrorLabel.Name = "emailErrorLabel";
             this.emailErrorLabel.Size = new System.Drawing.Size(11, 18);
             this.emailErrorLabel.TabIndex = 7;
@@ -158,7 +159,7 @@
             this.passwordErrorLabel.AutoSize = true;
             this.passwordErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.passwordErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.passwordErrorLabel.Location = new System.Drawing.Point(613, 273);
+            this.passwordErrorLabel.Location = new System.Drawing.Point(610, 221);
             this.passwordErrorLabel.Name = "passwordErrorLabel";
             this.passwordErrorLabel.Size = new System.Drawing.Size(11, 18);
             this.passwordErrorLabel.TabIndex = 8;
@@ -167,11 +168,11 @@
             // 
             // registerLabel
             // 
-            this.registerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.registerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.registerLabel.IsDerivedStyle = true;
-            this.registerLabel.Location = new System.Drawing.Point(504, 27);
+            this.registerLabel.Location = new System.Drawing.Point(493, 9);
             this.registerLabel.Name = "registerLabel";
-            this.registerLabel.Size = new System.Drawing.Size(603, 88);
+            this.registerLabel.Size = new System.Drawing.Size(603, 76);
             this.registerLabel.Style = MetroSet_UI.Enums.Style.Light;
             this.registerLabel.StyleManager = null;
             this.registerLabel.TabIndex = 9;
@@ -189,7 +190,7 @@
             this.documentComboBox.Items.AddRange(new object[] {
             "Паспорт",
             "Вид на жительство"});
-            this.documentComboBox.Location = new System.Drawing.Point(613, 405);
+            this.documentComboBox.Location = new System.Drawing.Point(610, 350);
             this.documentComboBox.Name = "documentComboBox";
             this.documentComboBox.Size = new System.Drawing.Size(411, 33);
             this.documentComboBox.TabIndex = 10;
@@ -197,7 +198,7 @@
             // 
             // registerAccountButton
             // 
-            this.registerAccountButton.Location = new System.Drawing.Point(737, 792);
+            this.registerAccountButton.Location = new System.Drawing.Point(610, 799);
             this.registerAccountButton.Name = "registerAccountButton";
             this.registerAccountButton.Size = new System.Drawing.Size(166, 37);
             this.registerAccountButton.TabIndex = 11;
@@ -210,7 +211,7 @@
             // 
             this.documentLabel.AutoSize = true;
             this.documentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.documentLabel.Location = new System.Drawing.Point(614, 377);
+            this.documentLabel.Location = new System.Drawing.Point(611, 322);
             this.documentLabel.Name = "documentLabel";
             this.documentLabel.Size = new System.Drawing.Size(110, 25);
             this.documentLabel.TabIndex = 12;
@@ -222,19 +223,20 @@
             this.documentErrorLabel.AutoSize = true;
             this.documentErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.documentErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.documentErrorLabel.Location = new System.Drawing.Point(616, 441);
+            this.documentErrorLabel.Location = new System.Drawing.Point(610, 384);
             this.documentErrorLabel.Name = "documentErrorLabel";
             this.documentErrorLabel.Size = new System.Drawing.Size(11, 18);
             this.documentErrorLabel.TabIndex = 13;
             this.documentErrorLabel.Text = "l";
             this.documentErrorLabel.Visible = false;
+            this.documentErrorLabel.Click += new System.EventHandler(this.documentErrorLabel_Click);
             // 
             // passwordRepeatError
             // 
             this.passwordRepeatError.AutoSize = true;
             this.passwordRepeatError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.passwordRepeatError.ForeColor = System.Drawing.Color.Red;
-            this.passwordRepeatError.Location = new System.Drawing.Point(613, 356);
+            this.passwordRepeatError.Location = new System.Drawing.Point(610, 301);
             this.passwordRepeatError.Name = "passwordRepeatError";
             this.passwordRepeatError.Size = new System.Drawing.Size(11, 18);
             this.passwordRepeatError.TabIndex = 16;
@@ -245,7 +247,7 @@
             // 
             this.passwordRepeatLabel.AutoSize = true;
             this.passwordRepeatLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passwordRepeatLabel.Location = new System.Drawing.Point(608, 295);
+            this.passwordRepeatLabel.Location = new System.Drawing.Point(605, 240);
             this.passwordRepeatLabel.Name = "passwordRepeatLabel";
             this.passwordRepeatLabel.Size = new System.Drawing.Size(185, 25);
             this.passwordRepeatLabel.TabIndex = 15;
@@ -255,7 +257,7 @@
             // passwordRepeatTextBox
             // 
             this.passwordRepeatTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passwordRepeatTextBox.Location = new System.Drawing.Point(613, 323);
+            this.passwordRepeatTextBox.Location = new System.Drawing.Point(610, 268);
             this.passwordRepeatTextBox.MaxLength = 100;
             this.passwordRepeatTextBox.Name = "passwordRepeatTextBox";
             this.passwordRepeatTextBox.PasswordChar = '*';
@@ -268,7 +270,7 @@
             this.nameError.AutoSize = true;
             this.nameError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nameError.ForeColor = System.Drawing.Color.Red;
-            this.nameError.Location = new System.Drawing.Point(616, 598);
+            this.nameError.Location = new System.Drawing.Point(613, 539);
             this.nameError.Name = "nameError";
             this.nameError.Size = new System.Drawing.Size(11, 18);
             this.nameError.TabIndex = 19;
@@ -279,7 +281,7 @@
             // 
             this.nameLabel.AutoSize = true;
             this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nameLabel.Location = new System.Drawing.Point(614, 537);
+            this.nameLabel.Location = new System.Drawing.Point(608, 478);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(54, 25);
             this.nameLabel.TabIndex = 18;
@@ -289,10 +291,10 @@
             // nameTextBox
             // 
             this.nameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nameTextBox.Location = new System.Drawing.Point(613, 565);
+            this.nameTextBox.Location = new System.Drawing.Point(610, 506);
             this.nameTextBox.MaxLength = 100;
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(408, 30);
+            this.nameTextBox.Size = new System.Drawing.Size(411, 30);
             this.nameTextBox.TabIndex = 17;
             this.nameTextBox.Visible = false;
             // 
@@ -301,7 +303,7 @@
             this.surnameError.AutoSize = true;
             this.surnameError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.surnameError.ForeColor = System.Drawing.Color.Red;
-            this.surnameError.Location = new System.Drawing.Point(616, 677);
+            this.surnameError.Location = new System.Drawing.Point(613, 619);
             this.surnameError.Name = "surnameError";
             this.surnameError.Size = new System.Drawing.Size(11, 18);
             this.surnameError.TabIndex = 23;
@@ -312,7 +314,7 @@
             // 
             this.surnameLabel.AutoSize = true;
             this.surnameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.surnameLabel.Location = new System.Drawing.Point(617, 616);
+            this.surnameLabel.Location = new System.Drawing.Point(614, 558);
             this.surnameLabel.Name = "surnameLabel";
             this.surnameLabel.Size = new System.Drawing.Size(103, 25);
             this.surnameLabel.TabIndex = 22;
@@ -322,10 +324,10 @@
             // surnameTextBox
             // 
             this.surnameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.surnameTextBox.Location = new System.Drawing.Point(613, 644);
+            this.surnameTextBox.Location = new System.Drawing.Point(610, 586);
             this.surnameTextBox.MaxLength = 100;
             this.surnameTextBox.Name = "surnameTextBox";
-            this.surnameTextBox.Size = new System.Drawing.Size(408, 30);
+            this.surnameTextBox.Size = new System.Drawing.Size(411, 30);
             this.surnameTextBox.TabIndex = 21;
             this.surnameTextBox.Visible = false;
             // 
@@ -334,7 +336,7 @@
             this.patronymicError.AutoSize = true;
             this.patronymicError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.patronymicError.ForeColor = System.Drawing.Color.Red;
-            this.patronymicError.Location = new System.Drawing.Point(616, 756);
+            this.patronymicError.Location = new System.Drawing.Point(613, 701);
             this.patronymicError.Name = "patronymicError";
             this.patronymicError.Size = new System.Drawing.Size(11, 18);
             this.patronymicError.TabIndex = 26;
@@ -345,7 +347,7 @@
             // 
             this.patronymicLabel.AutoSize = true;
             this.patronymicLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.patronymicLabel.Location = new System.Drawing.Point(617, 695);
+            this.patronymicLabel.Location = new System.Drawing.Point(611, 640);
             this.patronymicLabel.Name = "patronymicLabel";
             this.patronymicLabel.Size = new System.Drawing.Size(104, 25);
             this.patronymicLabel.TabIndex = 25;
@@ -355,10 +357,10 @@
             // patronymicTextBox
             // 
             this.patronymicTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.patronymicTextBox.Location = new System.Drawing.Point(613, 723);
+            this.patronymicTextBox.Location = new System.Drawing.Point(610, 668);
             this.patronymicTextBox.MaxLength = 100;
             this.patronymicTextBox.Name = "patronymicTextBox";
-            this.patronymicTextBox.Size = new System.Drawing.Size(408, 30);
+            this.patronymicTextBox.Size = new System.Drawing.Size(411, 30);
             this.patronymicTextBox.TabIndex = 24;
             this.patronymicTextBox.Visible = false;
             // 
@@ -380,7 +382,7 @@
             this.emailCodeError.AutoSize = true;
             this.emailCodeError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.emailCodeError.ForeColor = System.Drawing.Color.Red;
-            this.emailCodeError.Location = new System.Drawing.Point(616, 832);
+            this.emailCodeError.Location = new System.Drawing.Point(613, 778);
             this.emailCodeError.Name = "emailCodeError";
             this.emailCodeError.Size = new System.Drawing.Size(11, 18);
             this.emailCodeError.TabIndex = 30;
@@ -392,7 +394,7 @@
             // 
             this.emailCodeLabel.AutoSize = true;
             this.emailCodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.emailCodeLabel.Location = new System.Drawing.Point(617, 771);
+            this.emailCodeLabel.Location = new System.Drawing.Point(608, 719);
             this.emailCodeLabel.Name = "emailCodeLabel";
             this.emailCodeLabel.Size = new System.Drawing.Size(126, 25);
             this.emailCodeLabel.TabIndex = 29;
@@ -403,10 +405,10 @@
             // emailCodeTextBox
             // 
             this.emailCodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.emailCodeTextBox.Location = new System.Drawing.Point(613, 799);
+            this.emailCodeTextBox.Location = new System.Drawing.Point(610, 745);
             this.emailCodeTextBox.MaxLength = 100;
             this.emailCodeTextBox.Name = "emailCodeTextBox";
-            this.emailCodeTextBox.Size = new System.Drawing.Size(408, 30);
+            this.emailCodeTextBox.Size = new System.Drawing.Size(411, 30);
             this.emailCodeTextBox.TabIndex = 28;
             this.emailCodeTextBox.Visible = false;
             this.emailCodeTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
@@ -416,7 +418,7 @@
             this.documentNumberError.AutoSize = true;
             this.documentNumberError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.documentNumberError.ForeColor = System.Drawing.Color.Red;
-            this.documentNumberError.Location = new System.Drawing.Point(616, 522);
+            this.documentNumberError.Location = new System.Drawing.Point(613, 460);
             this.documentNumberError.Name = "documentNumberError";
             this.documentNumberError.Size = new System.Drawing.Size(11, 18);
             this.documentNumberError.TabIndex = 33;
@@ -427,7 +429,7 @@
             // 
             this.documentNumberLabel.AutoSize = true;
             this.documentNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.documentNumberLabel.Location = new System.Drawing.Point(614, 461);
+            this.documentNumberLabel.Location = new System.Drawing.Point(611, 402);
             this.documentNumberLabel.Name = "documentNumberLabel";
             this.documentNumberLabel.Size = new System.Drawing.Size(310, 25);
             this.documentNumberLabel.TabIndex = 32;
@@ -437,18 +439,31 @@
             // documentNumberTextBox
             // 
             this.documentNumberTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.documentNumberTextBox.Location = new System.Drawing.Point(613, 489);
+            this.documentNumberTextBox.Location = new System.Drawing.Point(610, 430);
             this.documentNumberTextBox.MaxLength = 100;
             this.documentNumberTextBox.Name = "documentNumberTextBox";
-            this.documentNumberTextBox.Size = new System.Drawing.Size(408, 30);
+            this.documentNumberTextBox.Size = new System.Drawing.Size(411, 30);
             this.documentNumberTextBox.TabIndex = 31;
             this.documentNumberTextBox.Visible = false;
+            // 
+            // sendMailButton
+            // 
+            this.sendMailButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sendMailButton.Location = new System.Drawing.Point(825, 799);
+            this.sendMailButton.Name = "sendMailButton";
+            this.sendMailButton.Size = new System.Drawing.Size(193, 37);
+            this.sendMailButton.TabIndex = 34;
+            this.sendMailButton.Text = "Отправить код";
+            this.sendMailButton.UseVisualStyleBackColor = true;
+            this.sendMailButton.Visible = false;
+            this.sendMailButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1911, 1055);
+            this.ClientSize = new System.Drawing.Size(1914, 930);
+            this.Controls.Add(this.sendMailButton);
             this.Controls.Add(this.documentNumberError);
             this.Controls.Add(this.documentNumberLabel);
             this.Controls.Add(this.documentNumberTextBox);
@@ -485,6 +500,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -526,6 +542,7 @@
         private System.Windows.Forms.Label documentNumberError;
         private System.Windows.Forms.Label documentNumberLabel;
         private System.Windows.Forms.TextBox documentNumberTextBox;
+        private System.Windows.Forms.Button sendMailButton;
     }
 }
 

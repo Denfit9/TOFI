@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroSet_UI;
+using MySqlConnector;
 
 namespace TOFIiBank
 {
@@ -16,9 +17,11 @@ namespace TOFIiBank
     {
         int state = 0;
 
-
+        public int randomCode = 0;
         public Login()
         {
+            Random random = new Random();
+            randomCode = random.Next(100000, 999999);
 
             InitializeComponent();
             if(state != 0)
@@ -40,6 +43,7 @@ namespace TOFIiBank
                 backToLoginButton.Visible = true;
                 documentNumberLabel.Visible = true;
                 documentNumberTextBox.Visible = true;
+                sendMailButton.Visible = true;
             }
             else 
             {
@@ -62,6 +66,18 @@ namespace TOFIiBank
                 emailCodeTextBox.Visible = false;
                 documentNumberLabel.Visible = false;
                 documentNumberTextBox.Visible = false;
+                emailCodeLabel.Visible = false;
+                emailCodeTextBox.Visible = false;
+                sendMailButton.Visible = false;
+                passwordErrorLabel.Visible = false;
+                passwordRepeatError.Visible = false;
+                documentNumberError.Visible = false;
+                emailCodeError.Visible = false;
+                emailErrorLabel.Visible = false;
+                nameError.Visible = false;
+                surnameError.Visible = false;
+                patronymicError.Visible = false;
+                documentErrorLabel.Visible = false;
             }
         }
 
@@ -133,6 +149,9 @@ namespace TOFIiBank
             backToLoginButton.Visible = true;
             documentNumberLabel.Visible = true;
             documentNumberTextBox.Visible = true;
+            emailCodeLabel.Visible = true;
+            emailCodeTextBox.Visible = true;
+            sendMailButton.Visible = true;
             // RegisterForm registerForm = new RegisterForm();
             //registerForm.Show();
             //Close();
@@ -168,6 +187,11 @@ namespace TOFIiBank
                 emailErrorLabel.Text = "Пустое поле почты";
                 emailErrorLabel.Visible = true;
                 error = true;
+            }
+            else if (!Regex.IsMatch(emailTextBox.Text, @"^[a-zA-Z0-9_.+-]+@gmail\.com$"))
+            {
+                emailErrorLabel.Text = "почта невалидана";
+                emailErrorLabel.Visible = true;
             }
             else if (!emailTextBox.Text.EndsWith("@gmail.com"))
             {
@@ -297,11 +321,51 @@ namespace TOFIiBank
                 error = false;
             }
 
+            if(emailCodeTextBox.Text.Length < 6)
+            {
+                emailCodeError.Text = "Получите код";
+                emailCodeError.Visible = true; 
+                error = true;
+            }
+            else if(!emailCodeTextBox.Text.Equals(randomCode.ToString()))
+            {
+                emailCodeError.Text = "Код неверный";
+                emailCodeError.Visible = true;
+                error = true;
+            }
+            else
+            {
+                emailCodeError.Visible = false;
+                error = false;
+            }
+
             if (!error)
             {
-                emailCodeLabel.Visible = true;
-                emailCodeTextBox.Visible = true;
+                string docType = "";
+                if(documentComboBox.SelectedIndex == 0)
+                {
+                    docType = "Passport";
+                }
+                else
+                {
+                    docType = "Resident card";
+                }
+                MySqlConnection conn = DBUtils.GetDBConnection();
+                conn.Open();
+                string createDoc = "Insert into document (doc_type, ident_number) " + " values('" + docType + "', '" + documentNumberTextBox.Text + "');";
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = createDoc;
+                int execute = cmd.ExecuteNonQuery();
+                string getDocId = "Select documentID From document where ident_number ='" + documentNumberTextBox.Text + "' ;";
+                cmd.CommandText = getDocId;
+                int docId = (int)cmd.ExecuteScalar();
+                string create = "Insert into user (name, surname, patronymic, email, password, documentID) " + " values('" + nameTextBox.Text + "', '" + surnameTextBox.Text + "', '" + patronymicTextBox.Text + "', '" + emailTextBox.Text + "', '" + passwordTextBox.Text + "', " + docId + ")";
+                cmd.CommandText = create;
+                execute = cmd.ExecuteNonQuery();
             }
+
+            
         }
 
         private void backToLoginButton_Click(object sender, EventArgs e)
@@ -326,6 +390,16 @@ namespace TOFIiBank
             backToLoginButton.Visible = false;
             emailCodeLabel.Visible = false;
             emailCodeTextBox.Visible = false;
+            sendMailButton.Visible = false;
+            passwordErrorLabel.Visible = false;
+            passwordRepeatError.Visible = false;
+            documentNumberError.Visible = false;
+            emailCodeError.Visible = false;
+            emailErrorLabel.Visible = false;
+            nameError.Visible = false;
+            surnameError.Visible = false;
+            patronymicError.Visible = false;
+            documentErrorLabel.Visible = false;
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -339,6 +413,36 @@ namespace TOFIiBank
         }
 
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (emailTextBox.Text == "")
+            {
+                emailErrorLabel.Text = "Пустое поле почты";
+                emailErrorLabel.Visible = true;
+            }
+            else if (!emailTextBox.Text.EndsWith("@gmail.com"))
+            {
+                emailErrorLabel.Text = "почта должна заканчиваться на @gmail.com";
+                emailErrorLabel.Visible = true;
+            }
+            else if (!Regex.IsMatch(emailTextBox.Text, @"^[a-zA-Z0-9_.+-]+@gmail\.com$"))
+            {
+                emailErrorLabel.Text = "почта невалидана";
+                emailErrorLabel.Visible = true;
+            }
+            else
+            {
+                emailErrorLabel.Visible = false;
+                Tools.sendConfirmationCode(emailTextBox.Text, "Ваш код: " + randomCode.ToString());
+            }
+            
+        }
+
+        private void documentErrorLabel_Click(object sender, EventArgs e)
         {
 
         }
