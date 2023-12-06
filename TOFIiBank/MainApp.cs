@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TOFIiBank
 {
-    public partial class MainApp : Form
+    public partial class Banking : Form
     {
-        public MainApp()
+        public Banking()
         {
             InitializeComponent();
             if(Program.userID == -1)

@@ -18,11 +18,13 @@ namespace TOFIiBank
         int state = 0;
 
         public int randomCode = 0;
+
+        public void LoginClose()
+        {
+            this.Close();
+        }
         public Login()
         {
-            Random random = new Random();
-            randomCode = random.Next(100000, 999999);
-
             InitializeComponent();
             if(state != 0)
             {
@@ -44,6 +46,10 @@ namespace TOFIiBank
                 documentNumberLabel.Visible = true;
                 documentNumberTextBox.Visible = true;
                 sendMailButton.Visible = true;
+                emailCodeLogin.Visible = false;
+                emailCodeLoginTextBox.Visible = false;
+                emailCodeLoginError.Visible = false;
+                sendEmailLoginButton.Visible = false;
             }
             else 
             {
@@ -78,6 +84,10 @@ namespace TOFIiBank
                 surnameError.Visible = false;
                 patronymicError.Visible = false;
                 documentErrorLabel.Visible = false;
+                emailCodeLogin.Visible = true;
+                emailCodeLoginTextBox.Visible = true;
+                emailCodeLoginError.Visible = false;
+                sendEmailLoginButton.Visible = true;
             }
         }
 
@@ -116,17 +126,96 @@ namespace TOFIiBank
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-
-            if(emailTextBox.Text=="") 
+            bool error = false;
+            if (emailTextBox.Text == "")
             {
-                emailErrorLabel.Text = "Empty email error";
+                emailErrorLabel.Text = "Пустое поле почты";
+                emailErrorLabel.Visible = true;
+                error = true;
+            }
+            else if (!Regex.IsMatch(emailTextBox.Text, @"^[a-zA-Z0-9_.+-]+@gmail\.com$"))
+            {
+                emailErrorLabel.Text = "почта невалидана";
                 emailErrorLabel.Visible = true;
             }
-            if(passwordTextBox.Text=="") 
+            else if (!emailTextBox.Text.EndsWith("@gmail.com"))
             {
-                passwordErrorLabel.Text = "Wrong password";
-                passwordErrorLabel.Visible = true;
+                emailErrorLabel.Text = "почта должна заканчиваться на @gmail.com";
+                emailErrorLabel.Visible = true;
+                error = true;
             }
+            else
+            {
+                emailErrorLabel.Visible = false;
+                error = false;
+            }
+            if (passwordTextBox.Text == "")
+            {
+                passwordErrorLabel.Text = "Пустое поле пароля";
+                passwordErrorLabel.Visible = true;
+                error = true;
+            }
+            else if (passwordTextBox.Text.Length <= 9)
+            {
+                passwordErrorLabel.Text = "Пароль должен быть длиннее 9 символов";
+                passwordErrorLabel.Visible = true;
+                error = true;
+            }
+            else if (!Regex.IsMatch(passwordTextBox.Text, @"^[a-zA-Z0-9]+$"))
+            {
+                passwordErrorLabel.Text = "Пароль должен содержать только английские символы";
+                passwordErrorLabel.Visible = true;
+                error = true;
+            }
+            else
+            {
+                passwordErrorLabel.Visible = false;
+                error = false;
+            }
+
+            if (emailCodeLoginTextBox.Text.Length < 6)
+            {
+                emailCodeLoginError.Text = "Получите код";
+                emailCodeLoginError.Visible = true;
+                error = true;
+            }
+            else if (!emailCodeLoginTextBox.Text.Equals(randomCode.ToString()))
+            {
+                emailCodeLoginError.Text = "Код неверный";
+                emailCodeLoginError.Visible = true;
+                error = true;
+            }
+            else
+            {
+                emailCodeLoginError.Visible = false;
+            }
+
+            if (Tools.checkUserExistence(emailTextBox.Text, passwordTextBox.Text))
+            {
+                emailErrorLabel.Visible = false;
+            }
+            else
+            {
+                emailErrorLabel.Text = "Пользователя не существует";
+                emailErrorLabel.Visible = true;
+            }
+            if (!error)
+            {
+                Program.userID = Tools.getUserID(emailTextBox.Text, passwordTextBox.Text);
+                if (Tools.checkSessionExistence(Program.userID))
+                {
+                    MessageBox.Show("Пользователь уже авторизован", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Program.userID = -1;
+                }
+                else
+                {
+                    MessageBox.Show("Вход успешен", "Успех", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    Tools.createSession(Program.userID);
+                    this.Close();
+                }
+                
+            }
+            
         }
 
         private void registerButton_Click(object sender, EventArgs e)
@@ -152,6 +241,10 @@ namespace TOFIiBank
             emailCodeLabel.Visible = true;
             emailCodeTextBox.Visible = true;
             sendMailButton.Visible = true;
+            emailCodeLogin.Visible = false;
+            emailCodeLoginTextBox.Visible = false;
+            emailCodeLoginError.Visible = false;
+            sendEmailLoginButton.Visible = false;
             // RegisterForm registerForm = new RegisterForm();
             //registerForm.Show();
             //Close();
@@ -178,8 +271,17 @@ namespace TOFIiBank
             }
             else
             {
-                documentNumberError.Visible = false;
-                error = false;
+                if (Tools.checkDocumentExistence(documentNumberTextBox.Text))
+                {
+                    documentNumberError.Text = "Документ уже используется";
+                    documentNumberError.Visible = true;
+                }
+                else
+                {
+                    documentNumberError.Visible = false;
+                    error = false;
+                }
+                
             }
 
             if (emailTextBox.Text == "")
@@ -201,8 +303,17 @@ namespace TOFIiBank
             }
             else
             {
-                emailErrorLabel.Visible = false;
-                error = false;
+                if (!Tools.checkEmailExistence(emailTextBox.Text))
+                {
+                    emailErrorLabel.Visible = false;
+                    error = false;
+                }
+                else
+                {
+                    emailErrorLabel.Text = "Почта занята";
+                    emailErrorLabel.Visible = true;
+                }
+
             }
             if (passwordTextBox.Text == "")
             {
@@ -336,7 +447,6 @@ namespace TOFIiBank
             else
             {
                 emailCodeError.Visible = false;
-                error = false;
             }
 
             if (!error)
@@ -363,6 +473,53 @@ namespace TOFIiBank
                 string create = "Insert into user (name, surname, patronymic, email, password, documentID) " + " values('" + nameTextBox.Text + "', '" + surnameTextBox.Text + "', '" + patronymicTextBox.Text + "', '" + emailTextBox.Text + "', '" + passwordTextBox.Text + "', " + docId + ")";
                 cmd.CommandText = create;
                 execute = cmd.ExecuteNonQuery();
+                conn.Close();
+                emailTextBox.Text = "";
+                passwordTextBox.Text = "";
+                passwordRepeatTextBox.Text = "";
+                documentComboBox.SelectedItem = -1;
+                documentNumberTextBox.Text = "";
+                nameTextBox.Text = "";
+                surnameTextBox.Text = "";
+                patronymicTextBox.Text = "";
+                emailTextBox.Text = "";
+
+                MessageBox.Show("Регистрация успешна", "Успех", MessageBoxButtons.OK, MessageBoxIcon.None);
+
+                state = 0;
+                loginButton.Visible = true;
+                registerLabel.Visible = false;
+                registerButton.Visible = true;
+                registerAccountButton.Visible = false;
+                documentLabel.Visible = false;
+                documentComboBox.Visible = false;
+                passwordRepeatLabel.Visible = false;
+                passwordRepeatTextBox.Visible = false;
+                documentNumberLabel.Visible = false;
+                documentNumberTextBox.Visible = false;
+                nameLabel.Visible = false;
+                nameTextBox.Visible = false;
+                surnameLabel.Visible = false;
+                surnameTextBox.Visible = false;
+                patronymicLabel.Visible = false;
+                patronymicTextBox.Visible = false;
+                backToLoginButton.Visible = false;
+                emailCodeLabel.Visible = false;
+                emailCodeTextBox.Visible = false;
+                sendMailButton.Visible = false;
+                passwordErrorLabel.Visible = false;
+                passwordRepeatError.Visible = false;
+                documentNumberError.Visible = false;
+                emailCodeError.Visible = false;
+                emailErrorLabel.Visible = false;
+                nameError.Visible = false;
+                surnameError.Visible = false;
+                patronymicError.Visible = false;
+                documentErrorLabel.Visible = false;
+                emailCodeLogin.Visible = true;
+                emailCodeLoginTextBox.Visible = true;
+                emailCodeLoginError.Visible = false;
+                sendEmailLoginButton.Visible = true;
             }
 
             
@@ -400,6 +557,10 @@ namespace TOFIiBank
             surnameError.Visible = false;
             patronymicError.Visible = false;
             documentErrorLabel.Visible = false;
+            emailCodeLogin.Visible = true;
+            emailCodeLoginTextBox.Visible = true;
+            emailCodeLoginError.Visible = false;
+            sendEmailLoginButton.Visible = true;
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -419,6 +580,7 @@ namespace TOFIiBank
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Random random = new Random();
             if (emailTextBox.Text == "")
             {
                 emailErrorLabel.Text = "Пустое поле почты";
@@ -436,8 +598,19 @@ namespace TOFIiBank
             }
             else
             {
-                emailErrorLabel.Visible = false;
-                Tools.sendConfirmationCode(emailTextBox.Text, "Ваш код: " + randomCode.ToString());
+                if (!Tools.checkEmailExistence(emailTextBox.Text))
+                {
+                    randomCode = random.Next(100000, 999999);
+                    emailErrorLabel.Visible = false;
+                    MessageBox.Show("Код выслан", "Отправлено", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    Tools.sendConfirmationCode(emailTextBox.Text, "Ваш код: " + randomCode.ToString());
+                }
+                else
+                {
+                    emailErrorLabel.Text = "Почта занята";
+                    emailErrorLabel.Visible = true;
+                }
+                
             }
             
         }
@@ -445,6 +618,25 @@ namespace TOFIiBank
         private void documentErrorLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void sendEmailLoginButton_Click(object sender, EventArgs e)
+        {
+            if(Tools.checkUserExistence(emailTextBox.Text, passwordTextBox.Text))
+            {
+                Random random = new Random();
+                emailCodeLoginError.Visible = false;
+                randomCode = random.Next(100000, 999999);
+                MessageBox.Show("Код выслан", "Отправлено", MessageBoxButtons.OK, MessageBoxIcon.None);
+                Tools.sendConfirmationCode(emailTextBox.Text, "Ваш код: " + randomCode.ToString());
+                emailErrorLabel.Visible = false;
+                passwordErrorLabel.Visible=false;
+            }
+            else
+            {
+                emailCodeLoginError.Text = "Пользователя не существует";
+                emailCodeLoginError.Visible = true;
+            }
         }
     }
 }

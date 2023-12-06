@@ -62,6 +62,10 @@
             this.documentNumberLabel = new System.Windows.Forms.Label();
             this.documentNumberTextBox = new System.Windows.Forms.TextBox();
             this.sendMailButton = new System.Windows.Forms.Button();
+            this.emailCodeLogin = new System.Windows.Forms.Label();
+            this.emailCodeLoginTextBox = new System.Windows.Forms.TextBox();
+            this.emailCodeLoginError = new System.Windows.Forms.Label();
+            this.sendEmailLoginButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // metroSetLabel1
@@ -458,11 +462,57 @@
             this.sendMailButton.Visible = false;
             this.sendMailButton.Click += new System.EventHandler(this.button1_Click);
             // 
+            // emailCodeLogin
+            // 
+            this.emailCodeLogin.AutoSize = true;
+            this.emailCodeLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.emailCodeLogin.Location = new System.Drawing.Point(608, 239);
+            this.emailCodeLogin.Name = "emailCodeLogin";
+            this.emailCodeLogin.Size = new System.Drawing.Size(126, 25);
+            this.emailCodeLogin.TabIndex = 35;
+            this.emailCodeLogin.Text = "Код с почты";
+            // 
+            // emailCodeLoginTextBox
+            // 
+            this.emailCodeLoginTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.emailCodeLoginTextBox.Location = new System.Drawing.Point(610, 267);
+            this.emailCodeLoginTextBox.MaxLength = 100;
+            this.emailCodeLoginTextBox.Name = "emailCodeLoginTextBox";
+            this.emailCodeLoginTextBox.Size = new System.Drawing.Size(411, 30);
+            this.emailCodeLoginTextBox.TabIndex = 36;
+            // 
+            // emailCodeLoginError
+            // 
+            this.emailCodeLoginError.AutoSize = true;
+            this.emailCodeLoginError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.emailCodeLoginError.ForeColor = System.Drawing.Color.Red;
+            this.emailCodeLoginError.Location = new System.Drawing.Point(610, 301);
+            this.emailCodeLoginError.Name = "emailCodeLoginError";
+            this.emailCodeLoginError.Size = new System.Drawing.Size(11, 18);
+            this.emailCodeLoginError.TabIndex = 37;
+            this.emailCodeLoginError.Text = "l";
+            this.emailCodeLoginError.Visible = false;
+            // 
+            // sendEmailLoginButton
+            // 
+            this.sendEmailLoginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sendEmailLoginButton.Location = new System.Drawing.Point(737, 430);
+            this.sendEmailLoginButton.Name = "sendEmailLoginButton";
+            this.sendEmailLoginButton.Size = new System.Drawing.Size(166, 37);
+            this.sendEmailLoginButton.TabIndex = 38;
+            this.sendEmailLoginButton.Text = "Отправить код";
+            this.sendEmailLoginButton.UseVisualStyleBackColor = true;
+            this.sendEmailLoginButton.Click += new System.EventHandler(this.sendEmailLoginButton_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1914, 930);
+            this.Controls.Add(this.sendEmailLoginButton);
+            this.Controls.Add(this.emailCodeLoginError);
+            this.Controls.Add(this.emailCodeLoginTextBox);
+            this.Controls.Add(this.emailCodeLogin);
             this.Controls.Add(this.sendMailButton);
             this.Controls.Add(this.documentNumberError);
             this.Controls.Add(this.documentNumberLabel);
@@ -543,6 +593,10 @@
         private System.Windows.Forms.Label documentNumberLabel;
         private System.Windows.Forms.TextBox documentNumberTextBox;
         private System.Windows.Forms.Button sendMailButton;
+        private System.Windows.Forms.Label emailCodeLogin;
+        private System.Windows.Forms.TextBox emailCodeLoginTextBox;
+        private System.Windows.Forms.Label emailCodeLoginError;
+        private System.Windows.Forms.Button sendEmailLoginButton;
     }
 }
 

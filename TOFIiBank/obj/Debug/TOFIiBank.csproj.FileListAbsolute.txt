@@ -26,3 +26,4 @@ C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\bin\Debug\System.Memory.xml
 C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.Banking.resources

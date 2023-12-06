@@ -20,11 +20,19 @@ namespace TOFIiBank
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
+            if(userID != -1)
+            {
+                Application.Run(new Banking());
+            }
            // Application.Run(new MainApp());
 
-
+            if(userID != -1)
+            {
+                Tools.deleteSession(userID);
+            }
         }
 
         public static int userID = -1;
+        public static int requiredWindow = -1;
     }
 }
