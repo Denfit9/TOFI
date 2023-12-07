@@ -23,5 +23,23 @@ namespace TOFIiBank
 
             }
         }
+
+        private void myAccounts_Click(object sender, EventArgs e)
+        {
+            myAccountsPanel.Visible = true;
+            paymentsPanel.Visible = false;
+
+        }
+
+        private void payments_Click(object sender, EventArgs e)
+        {
+            myAccountsPanel.Visible = false;
+            paymentsPanel.Visible = true;
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

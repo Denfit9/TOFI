@@ -19,6 +19,7 @@ namespace TOFIiBank
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Banking());
             Application.Run(new Login());
             if(userID != -1)
             {

@@ -136,5 +136,41 @@
   <ItemGroup>
     <None Include="Resources\backbutton11.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bank1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bank2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\accounts.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bankacc2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\payment-method2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mycredits.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\allcredits.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notification12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gear12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paymentsHistory.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paymentsHistory1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
