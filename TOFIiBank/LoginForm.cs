@@ -211,6 +211,7 @@ namespace TOFIiBank
                 {
                     MessageBox.Show("Вход успешен", "Успех", MessageBoxButtons.OK, MessageBoxIcon.None);
                     Tools.createSession(Program.userID);
+                    Program.userEmail = emailTextBox.Text;
                     this.Close();
                 }
                 

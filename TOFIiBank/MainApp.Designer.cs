@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Banking));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.mainPanel = new System.Windows.Forms.Panel();
             this.settings = new System.Windows.Forms.Button();
             this.notifications = new System.Windows.Forms.Button();
             this.credits = new System.Windows.Forms.Button();
@@ -37,21 +41,10 @@
             this.paymentsHistory = new System.Windows.Forms.Button();
             this.payments = new System.Windows.Forms.Button();
             this.myAccounts = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.myAccountsPanel = new System.Windows.Forms.Panel();
-            this.paymentsPanel = new System.Windows.Forms.Panel();
-            this.myPaymentsLabel = new System.Windows.Forms.Label();
-            this.myAccountsLabel = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.myAccountsPanel.SuspendLayout();
-            this.paymentsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -71,6 +64,47 @@
             this.panel1.Size = new System.Drawing.Size(343, 591);
             this.panel1.TabIndex = 0;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(343, 171);
+            this.panel2.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.Color.Transparent;
+            this.label2.Location = new System.Drawing.Point(20, 143);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 19);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Функции";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(115, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 24);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Bank app";
+            // 
+            // mainPanel
+            // 
+            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainPanel.Location = new System.Drawing.Point(343, 0);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(1467, 591);
+            this.mainPanel.TabIndex = 1;
+            // 
             // settings
             // 
             this.settings.Dock = System.Windows.Forms.DockStyle.Top;
@@ -88,6 +122,7 @@
             this.settings.Text = "              Настройки";
             this.settings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.settings.UseVisualStyleBackColor = true;
+            this.settings.Click += new System.EventHandler(this.settings_Click);
             // 
             // notifications
             // 
@@ -106,6 +141,7 @@
             this.notifications.Text = "              Уведомления";
             this.notifications.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.notifications.UseVisualStyleBackColor = true;
+            this.notifications.Click += new System.EventHandler(this.notifications_Click);
             // 
             // credits
             // 
@@ -124,6 +160,7 @@
             this.credits.Text = "              Кредиты";
             this.credits.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.credits.UseVisualStyleBackColor = true;
+            this.credits.Click += new System.EventHandler(this.credits_Click);
             // 
             // myCredits
             // 
@@ -142,6 +179,7 @@
             this.myCredits.Text = "              Мои кредиты";
             this.myCredits.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.myCredits.UseVisualStyleBackColor = true;
+            this.myCredits.Click += new System.EventHandler(this.myCredits_Click);
             // 
             // paymentsHistory
             // 
@@ -160,6 +198,7 @@
             this.paymentsHistory.Text = "              История переводов";
             this.paymentsHistory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.paymentsHistory.UseVisualStyleBackColor = true;
+            this.paymentsHistory.Click += new System.EventHandler(this.paymentsHistory_Click);
             // 
             // payments
             // 
@@ -199,39 +238,6 @@
             this.myAccounts.UseVisualStyleBackColor = true;
             this.myAccounts.Click += new System.EventHandler(this.myAccounts_Click);
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(343, 171);
-            this.panel2.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.ForeColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(20, 143);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 19);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Функции";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(115, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 24);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Bank app";
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::TOFIiBank.Properties.Resources.Bank2;
@@ -241,80 +247,12 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // myAccountsPanel
-            // 
-            this.myAccountsPanel.Controls.Add(this.myAccountsLabel);
-            this.myAccountsPanel.Controls.Add(this.panel4);
-            this.myAccountsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.myAccountsPanel.Location = new System.Drawing.Point(343, 0);
-            this.myAccountsPanel.Name = "myAccountsPanel";
-            this.myAccountsPanel.Size = new System.Drawing.Size(1467, 591);
-            this.myAccountsPanel.TabIndex = 1;
-            this.myAccountsPanel.Visible = false;
-            // 
-            // paymentsPanel
-            // 
-            this.paymentsPanel.Controls.Add(this.myPaymentsLabel);
-            this.paymentsPanel.Controls.Add(this.panel3);
-            this.paymentsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.paymentsPanel.Location = new System.Drawing.Point(343, 0);
-            this.paymentsPanel.Name = "paymentsPanel";
-            this.paymentsPanel.Size = new System.Drawing.Size(1467, 591);
-            this.paymentsPanel.TabIndex = 2;
-            this.paymentsPanel.Visible = false;
-            // 
-            // myPaymentsLabel
-            // 
-            this.myPaymentsLabel.AutoSize = true;
-            this.myPaymentsLabel.BackColor = System.Drawing.Color.White;
-            this.myPaymentsLabel.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.myPaymentsLabel.Location = new System.Drawing.Point(780, 22);
-            this.myPaymentsLabel.Name = "myPaymentsLabel";
-            this.myPaymentsLabel.Size = new System.Drawing.Size(156, 35);
-            this.myPaymentsLabel.TabIndex = 0;
-            this.myPaymentsLabel.Text = "Переводы";
-            this.myPaymentsLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.myPaymentsLabel.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // myAccountsLabel
-            // 
-            this.myAccountsLabel.AutoSize = true;
-            this.myAccountsLabel.BackColor = System.Drawing.Color.White;
-            this.myAccountsLabel.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.myAccountsLabel.Location = new System.Drawing.Point(780, 22);
-            this.myAccountsLabel.Name = "myAccountsLabel";
-            this.myAccountsLabel.Size = new System.Drawing.Size(157, 35);
-            this.myAccountsLabel.TabIndex = 0;
-            this.myAccountsLabel.Text = "Мои счета";
-            this.myAccountsLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1467, 74);
-            this.panel3.TabIndex = 1;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1467, 74);
-            this.panel4.TabIndex = 2;
-            // 
             // Banking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1810, 591);
-            this.Controls.Add(this.paymentsPanel);
-            this.Controls.Add(this.myAccountsPanel);
+            this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Banking";
@@ -325,10 +263,6 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.myAccountsPanel.ResumeLayout(false);
-            this.myAccountsPanel.PerformLayout();
-            this.paymentsPanel.ResumeLayout(false);
-            this.paymentsPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -347,11 +281,6 @@
         private System.Windows.Forms.Button paymentsHistory;
         private System.Windows.Forms.Button settings;
         private System.Windows.Forms.Button notifications;
-        private System.Windows.Forms.Panel myAccountsPanel;
-        private System.Windows.Forms.Label myAccountsLabel;
-        private System.Windows.Forms.Panel paymentsPanel;
-        private System.Windows.Forms.Label myPaymentsLabel;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel mainPanel;
     }
 }

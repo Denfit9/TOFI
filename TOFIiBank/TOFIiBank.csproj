@@ -91,9 +91,52 @@
     <Compile Include="MainApp.Designer.cs">
       <DependentUpon>MainApp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\BancAccount.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools.cs" />
+    <Compile Include="UserControls\UC_Accounts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_Accounts.Designer.cs">
+      <DependentUpon>UC_Accounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UC_Credist.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_Credist.Designer.cs">
+      <DependentUpon>UC_Credist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UC_MyCredits.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_MyCredits.Designer.cs">
+      <DependentUpon>UC_MyCredits.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UC_Notifications.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_Notifications.Designer.cs">
+      <DependentUpon>UC_Notifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UC_Payments.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_Payments.Designer.cs">
+      <DependentUpon>UC_Payments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UC_PaymentsHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_PaymentsHistory.Designer.cs">
+      <DependentUpon>UC_PaymentsHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UC_Settings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_Settings.Designer.cs">
+      <DependentUpon>UC_Settings.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -110,6 +153,27 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\UC_Accounts.resx">
+      <DependentUpon>UC_Accounts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_Credist.resx">
+      <DependentUpon>UC_Credist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_MyCredits.resx">
+      <DependentUpon>UC_MyCredits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_Notifications.resx">
+      <DependentUpon>UC_Notifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_Payments.resx">
+      <DependentUpon>UC_Payments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_PaymentsHistory.resx">
+      <DependentUpon>UC_PaymentsHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_Settings.resx">
+      <DependentUpon>UC_Settings.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

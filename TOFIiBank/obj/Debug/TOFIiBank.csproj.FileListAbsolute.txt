@@ -27,3 +27,10 @@ C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\bin\Debug\System.Numerics.Vect
 C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.Banking.resources
+C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.UserControls.UC_Accounts.resources
+C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.UserControls.UC_Payments.resources
+C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.UserControls.UC_Credist.resources
+C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.UserControls.UC_MyCredits.resources
+C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.UserControls.UC_Notifications.resources
+C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.UserControls.UC_PaymentsHistory.resources
+C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.UserControls.UC_Settings.resources
