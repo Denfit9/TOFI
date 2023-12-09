@@ -34,7 +34,7 @@ namespace TOFIiBank
         }
 
         public static int userID = 1;
-        public static string userEmail = "d03062002@gmail.com";
+        public static string userEmail = Tools.getUserEmail(userID);
         public static int requiredWindow = -1;
     }
 }

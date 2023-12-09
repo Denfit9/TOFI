@@ -10,6 +10,7 @@ namespace TOFIiBank.Models
 {
     public class BancAccount
     {
+        public int notificationID { get; set; }
         public int bancAccountID { get; set; }
         public int userID { get; set; }
         public float balance { get; set; }
@@ -17,8 +18,9 @@ namespace TOFIiBank.Models
         public string bancAccountType { get; set; }
         public string currency { get; set; }
         public string accountNumber { get; set; }
+        public string secondOwnerId { get; set; }
 
-        public BancAccount(int bancAccountID, int userID, float balance, DateTime expiresAt, string bancAccountType, string currency, string accountNumber) 
+        public BancAccount(int bancAccountID, int userID, float balance, DateTime expiresAt, string bancAccountType, string currency, string accountNumber, string secondOwnerId) 
         {
             string dateTimeNormal = expiresAt.ToString("dd-MM-yyyy");
             this.bancAccountID = bancAccountID;
@@ -28,6 +30,7 @@ namespace TOFIiBank.Models
             this.bancAccountType = bancAccountType == "single" ? "Одиночный" : "Двойной";
             this.currency = currency;
             this.accountNumber = accountNumber;
+            this.secondOwnerId = secondOwnerId;
         }
     }
 }

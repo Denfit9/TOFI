@@ -50,6 +50,9 @@ namespace TOFIiBank
                 emailCodeLoginTextBox.Visible = false;
                 emailCodeLoginError.Visible = false;
                 sendEmailLoginButton.Visible = false;
+                monthCalendar1.Visible = true;
+                birthdayLabel.Visible = true;
+                birthdayLabelError.Visible = false;
             }
             else 
             {
@@ -88,6 +91,9 @@ namespace TOFIiBank
                 emailCodeLoginTextBox.Visible = true;
                 emailCodeLoginError.Visible = false;
                 sendEmailLoginButton.Visible = true;
+                monthCalendar1.Visible = false;
+                birthdayLabel.Visible = false;
+                birthdayLabelError.Visible = false;
             }
         }
 
@@ -96,7 +102,7 @@ namespace TOFIiBank
 
         }
 
-        private void CheckSimilarPasswords(ref bool error)
+        private void CheckSimilarPasswords(ref int error)
         {
             if (passwordTextBox.Text != passwordRepeatTextBox.Text)
             {
@@ -104,13 +110,13 @@ namespace TOFIiBank
                 passwordErrorLabel.Visible = true;
                 passwordRepeatError.Text = "Пароли не совпадают";
                 passwordRepeatError.Visible = true;
-                error = true;
+                error++;
             }
             else
             {
                 passwordErrorLabel.Visible = false;
                 passwordRepeatError.Visible = false;
-                error = false;
+                error--;
             }
         }
 
@@ -246,6 +252,8 @@ namespace TOFIiBank
             emailCodeLoginTextBox.Visible = false;
             emailCodeLoginError.Visible = false;
             sendEmailLoginButton.Visible = false;
+            monthCalendar1.Visible = true;
+            birthdayLabel.Visible = true;
             // RegisterForm registerForm = new RegisterForm();
             //registerForm.Show();
             //Close();
@@ -255,20 +263,20 @@ namespace TOFIiBank
         {
             string pattern = @"^[A-Z]{2}\d{7}$";
 
-            bool error = false;
+            int error = 0;
             string document = "";
 
             if (documentNumberTextBox.Text.Length < 9)
             {
                 documentNumberError.Text = "Номер документа состоит из девяти символов";
                 documentNumberError.Visible = true;
-                error = true;
+                error++;
             }
             else if(!Regex.IsMatch(documentNumberTextBox.Text, pattern))
             {
                 documentNumberError.Text = "Документ не валиден";
                 documentNumberError.Visible = true;
-                error = true;
+                error++;
             }
             else
             {
@@ -276,11 +284,12 @@ namespace TOFIiBank
                 {
                     documentNumberError.Text = "Документ уже используется";
                     documentNumberError.Visible = true;
+                    error++;
                 }
                 else
                 {
                     documentNumberError.Visible = false;
-                    error = false;
+                    error--;
                 }
                 
             }
@@ -289,25 +298,26 @@ namespace TOFIiBank
             {
                 emailErrorLabel.Text = "Пустое поле почты";
                 emailErrorLabel.Visible = true;
-                error = true;
+                error++;
             }
             else if (!Regex.IsMatch(emailTextBox.Text, @"^[a-zA-Z0-9_.+-]+@gmail\.com$"))
             {
                 emailErrorLabel.Text = "почта невалидана";
                 emailErrorLabel.Visible = true;
+                error++;
             }
             else if (!emailTextBox.Text.EndsWith("@gmail.com"))
             {
                 emailErrorLabel.Text = "почта должна заканчиваться на @gmail.com";
                 emailErrorLabel.Visible = true;
-                error = true;
+                error++;
             }
             else
             {
                 if (!Tools.checkEmailExistence(emailTextBox.Text))
                 {
                     emailErrorLabel.Visible = false;
-                    error = false;
+                    error--;
                 }
                 else
                 {
@@ -320,19 +330,19 @@ namespace TOFIiBank
             {
                 passwordErrorLabel.Text = "Пустое поле пароля";
                 passwordErrorLabel.Visible = true;
-                error = true;
+                error++;
             }
             else if (passwordTextBox.Text.Length <= 9)
             {
                 passwordErrorLabel.Text = "Пароль должен быть длиннее 9 символов";
                 passwordErrorLabel.Visible = true;
-                error = true;
+                error++;
             }
             else if (!Regex.IsMatch(passwordTextBox.Text, @"^[a-zA-Z0-9]+$"))
             {
                 passwordErrorLabel.Text = "Пароль должен содержать только английские символы";
                 passwordErrorLabel.Visible = true;
-                error = true;
+                error++;
             }
             else
             {
@@ -342,19 +352,19 @@ namespace TOFIiBank
             {
                 passwordRepeatError.Text = "Пустое поле пароля";
                 passwordRepeatError.Visible = true;
-                error = true;
+                error++;
             }
             else if (passwordRepeatTextBox.Text.Length <= 9)
             {
                 passwordRepeatError.Text = "Пароль должен быть длиннее 9 символов";
                 passwordRepeatError.Visible = true;
-                error = true;
+                error++;
             }
             else if (!Regex.IsMatch(passwordRepeatTextBox.Text, @"^[a-zA-Z0-9]+$"))
             {
                 passwordRepeatError.Text = "Пароль должен содержать только английские символы";
                 passwordRepeatError.Visible = true;
-                error = true;
+                error++;
             }
             else
             {
@@ -363,7 +373,7 @@ namespace TOFIiBank
             if (documentComboBox.SelectedIndex !=-1)
             {
                 documentErrorLabel.Visible = false; 
-                error = false;
+                error--;
                 if(documentComboBox.SelectedIndex == 0)
                 {
                     document = "Passport";
@@ -377,80 +387,94 @@ namespace TOFIiBank
             { 
                 documentErrorLabel.Visible = true;
                 documentErrorLabel.Text = "Выберите тип документа";
-                error = true; 
+                error++; 
             }
             if (nameTextBox.Text.Length < 2)
             {
                 nameError.Text = "Поле имени не должно быть пустым или меньше двух символов";
                 nameError.Visible = true;
-                error = true;
+                error++;
             }
             else if(!Regex.IsMatch(nameTextBox.Text, @"^[a-zA-Z]+$"))
             {
                 nameError.Text = "Пожалуйста пишите имя латиницей как в паспорте";
                 nameError.Visible = true;
-                error = true;
+                error++;
             }
             else
             {
                 nameError.Visible = false;
-                error = false;
+                error--;
             }
 
             if (surnameTextBox.Text.Length < 2)
             {
                 surnameError.Text = "Поле фамилии не должно быть пустым или меньше двух символов";
                 surnameError.Visible = true;
-                error = true;
+                error++;
             }
             else if (!Regex.IsMatch(surnameTextBox.Text, @"^[a-zA-Z]+$"))
             {
                 surnameError.Text = "Пожалуйста пишите фимилию латиницей как в паспорте";
                 surnameError.Visible = true;
-                error = true;
+                error++;
             }
             else
             {
                 surnameError.Visible = false;
-                error = false;
+                error--;
             }
 
             if (patronymicTextBox.Text.Length < 2)
             {
                 patronymicError.Text = "Поле отчества не должно быть пустым или меньше двух символов";
                 patronymicError.Visible = true;
-                error = true;
+                error++;
             }
             else if (!Regex.IsMatch(patronymicTextBox.Text, @"^[a-zA-Z]+$"))
             {
                 patronymicError.Text = "Пожалуйста пишите отчество латиницей как в паспорте";
                 patronymicError.Visible = true;
-                error = true;
+                error++;
             }
             else
             {
                 patronymicError.Visible = false;
-                error = false;
+                error--;
             }
 
             if(emailCodeTextBox.Text.Length < 6)
             {
                 emailCodeError.Text = "Получите код";
                 emailCodeError.Visible = true; 
-                error = true;
+                error++;
             }
             else if(!emailCodeTextBox.Text.Equals(randomCode.ToString()))
             {
                 emailCodeError.Text = "Код неверный";
                 emailCodeError.Visible = true;
-                error = true;
+                error++;
             }
             else
             {
                 emailCodeError.Visible = false;
+                error--;
             }
 
-            if (!error)
+            if(monthCalendar1.SelectionRange.Start > DateTime.Now.AddYears(-14))
+            {
+                birthdayLabelError.Text = "Вы должны быть старше 14 лет";
+                birthdayLabelError.Visible = true;
+                error++;
+            }
+            else
+            {
+                birthdayLabelError.Visible = false;
+                error--;
+            }
+
+
+            if (error <= 0)
             {
                 string docType = "";
                 if(documentComboBox.SelectedIndex == 0)
@@ -471,7 +495,7 @@ namespace TOFIiBank
                 string getDocId = "Select documentID From document where ident_number ='" + documentNumberTextBox.Text + "' ;";
                 cmd.CommandText = getDocId;
                 int docId = (int)cmd.ExecuteScalar();
-                string create = "Insert into user (name, surname, patronymic, email, password, documentID) " + " values('" + nameTextBox.Text + "', '" + surnameTextBox.Text + "', '" + patronymicTextBox.Text + "', '" + emailTextBox.Text + "', '" + passwordTextBox.Text + "', " + docId + ")";
+                string create = "Insert into user (name, surname, patronymic, email, password, documentID, birthday) " + " values('" + nameTextBox.Text + "', '" + surnameTextBox.Text + "', '" + patronymicTextBox.Text + "', '" + emailTextBox.Text + "', '" + passwordTextBox.Text + "', " + docId + ",'" + monthCalendar1.SelectionRange.Start.ToString("yyyy-MM-dd")  + "')";
                 cmd.CommandText = create;
                 execute = cmd.ExecuteNonQuery();
                 conn.Close();
@@ -521,6 +545,9 @@ namespace TOFIiBank
                 emailCodeLoginTextBox.Visible = true;
                 emailCodeLoginError.Visible = false;
                 sendEmailLoginButton.Visible = true;
+                monthCalendar1.Visible = false;
+                birthdayLabel.Visible = false;
+                birthdayLabelError.Visible = false;
             }
 
             
@@ -562,6 +589,9 @@ namespace TOFIiBank
             emailCodeLoginTextBox.Visible = true;
             emailCodeLoginError.Visible = false;
             sendEmailLoginButton.Visible = true;
+            monthCalendar1.Visible = false;
+            birthdayLabel.Visible = false;
+            birthdayLabelError.Visible = false;
         }
 
         private void label5_Click(object sender, EventArgs e)

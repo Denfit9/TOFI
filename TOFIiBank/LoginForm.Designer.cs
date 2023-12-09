@@ -67,6 +67,9 @@
             this.emailCodeLoginTextBox = new System.Windows.Forms.TextBox();
             this.emailCodeLoginError = new System.Windows.Forms.Label();
             this.sendEmailLoginButton = new System.Windows.Forms.Button();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.birthdayLabel = new System.Windows.Forms.Label();
+            this.birthdayLabelError = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // metroSetLabel1
@@ -505,11 +508,45 @@
             this.sendEmailLoginButton.UseVisualStyleBackColor = true;
             this.sendEmailLoginButton.Click += new System.EventHandler(this.sendEmailLoginButton_Click);
             // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(1071, 119);
+            this.monthCalendar1.MaxSelectionCount = 1;
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 39;
+            this.monthCalendar1.Visible = false;
+            // 
+            // birthdayLabel
+            // 
+            this.birthdayLabel.AutoSize = true;
+            this.birthdayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.birthdayLabel.Location = new System.Drawing.Point(1066, 85);
+            this.birthdayLabel.Name = "birthdayLabel";
+            this.birthdayLabel.Size = new System.Drawing.Size(161, 25);
+            this.birthdayLabel.TabIndex = 40;
+            this.birthdayLabel.Text = "Дата рождения";
+            this.birthdayLabel.Visible = false;
+            // 
+            // birthdayLabelError
+            // 
+            this.birthdayLabelError.AutoSize = true;
+            this.birthdayLabelError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.birthdayLabelError.ForeColor = System.Drawing.Color.Red;
+            this.birthdayLabelError.Location = new System.Drawing.Point(1068, 335);
+            this.birthdayLabelError.Name = "birthdayLabelError";
+            this.birthdayLabelError.Size = new System.Drawing.Size(11, 18);
+            this.birthdayLabelError.TabIndex = 41;
+            this.birthdayLabelError.Text = "l";
+            this.birthdayLabelError.Visible = false;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1914, 930);
+            this.Controls.Add(this.birthdayLabelError);
+            this.Controls.Add(this.birthdayLabel);
+            this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.sendEmailLoginButton);
             this.Controls.Add(this.emailCodeLoginError);
             this.Controls.Add(this.emailCodeLoginTextBox);
@@ -599,6 +636,9 @@
         private System.Windows.Forms.TextBox emailCodeLoginTextBox;
         private System.Windows.Forms.Label emailCodeLoginError;
         private System.Windows.Forms.Button sendEmailLoginButton;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Label birthdayLabel;
+        private System.Windows.Forms.Label birthdayLabelError;
     }
 }
 
