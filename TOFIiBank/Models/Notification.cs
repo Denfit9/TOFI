@@ -34,6 +34,10 @@ namespace TOFIiBank.Models
                 }
                 descriptionFixed = "Пользователь " + Tools.getUserEmail(secondUserID) + " хочет создать с вами совместный счёт с валютой " + description + " и типом подтверждения операций " + approvalType + ". Ваше мнение?";
             }
+            else if (description == "block")
+            {
+                descriptionFixed = "Пользователь " + Tools.getUserEmail(secondUserID) + " хочет заблокировать совместный счёт под номером: " + bancAccountNumber +  ". Ваше мнение?";
+            }
             this.notificationID = notificationID;
             this.description = descriptionFixed;
             this.secondUserID = secondUserID;

@@ -166,6 +166,27 @@ namespace TOFIiBank.UserControls
             }
         }
 
+        public void askBlockJointConfirm(string number, string secondOwnerEmail)
+        {
+            DialogResult result = MessageBox.Show(
+                "Заблокировать счёт?",
+                "Вы уверены?",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button1);
+            if (result == DialogResult.Yes)
+            {
+                Tools.blockJointAccount(number, secondOwnerEmail, Program.userID);
+                MessageBox.Show("Запрос на блокировку отправлен второму владельцу");
+                List<BancAccount> accounts = Tools.getAllAccount(Program.userID);
+                dataGridView1.DataSource = accounts;
+            }
+            else if (result == DialogResult.No)
+            {
+
+            }
+        }
+
         public void showFailureMessage(string message)
         {
             MessageBox.Show(message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -296,6 +317,7 @@ namespace TOFIiBank.UserControls
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
                 string number = row.Cells[1].Value.ToString();
                 Tools.updateMoney(number);
+                Tools.createTransactionSys(100, "added", Tools.getAccountIDS(number), Tools.getAccountIDS(number), "added by system", "completed");
                 MessageBox.Show("Средства добавлены");
                 List<BancAccount> accounts = Tools.getAllAccount(Program.userID);
                 dataGridView1.DataSource = accounts;
@@ -305,7 +327,15 @@ namespace TOFIiBank.UserControls
             {
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
                 string number = row.Cells[1].Value.ToString();
-                askBlockConfirm(number);
+                string type = row.Cells[0].Value.ToString();
+                if(type == "single")
+                {
+                    askBlockConfirm(number);
+                }
+                else
+                {
+                    askBlockJointConfirm(number, row.Cells[2].Value.ToString());
+                }
             }
         }
 

@@ -73,6 +73,27 @@ namespace TOFIiBank.UserControls
 
             }
         }
+        public void askMessageConfirmJointBlock(string number, string id)
+        {
+            DialogResult result = MessageBox.Show(
+                "Одобрить операцию?",
+                "Вы уверены?",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button1);
+            if (result == DialogResult.Yes)
+            {
+
+                Tools.confirmJointAccountBlocking(number, id);
+                MessageBox.Show("Операция одобрена", "Одобрено", MessageBoxButtons.OK, MessageBoxIcon.None);
+                List<Notification> notificaitions = Tools.getAllNotifications(Program.userID);
+                dataGridView1.DataSource = notificaitions;
+            }
+            else if (result == DialogResult.No)
+            {
+
+            }
+        }
 
         public void askMessageRejectJoint(string number, string id)
         {
@@ -95,15 +116,45 @@ namespace TOFIiBank.UserControls
 
             }
         }
+        public void askMessageRejectJointBlock(string number, string id)
+        {
+            DialogResult result = MessageBox.Show(
+                "Отклонить операцию?",
+                "Вы уверены?",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button1);
+            if (result == DialogResult.Yes)
+            {
 
-            private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+                Tools.rejectJointAccountBlocking(number, id);
+                MessageBox.Show("Операция отклонена", "отклонено", MessageBoxButtons.OK, MessageBoxIcon.None);
+                List<Notification> notificaitions = Tools.getAllNotifications(Program.userID);
+                dataGridView1.DataSource = notificaitions;
+            }
+            else if (result == DialogResult.No)
+            {
+
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 3)
             {
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
                 string number = row.Cells[2].Value.ToString();
                 string id = row.Cells[0].Value.ToString();
-                askMessageConfirmJoint(number, id);
+                string desc = row.Cells[1].Value.ToString();
+                if (desc.Contains("создать"))
+                {
+                    askMessageConfirmJoint(number, id);
+                }
+                else if (desc.Contains("заблокировать"))
+                {
+                    askMessageConfirmJointBlock(number, id);
+                }
+
             }
 
             if (e.ColumnIndex == 4)
@@ -111,7 +162,16 @@ namespace TOFIiBank.UserControls
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
                 string number = row.Cells[2].Value.ToString();
                 string id = row.Cells[0].Value.ToString();
-                askMessageRejectJoint(number, id);
+                string desc = row.Cells[1].Value.ToString();
+                if (desc.Contains("создать"))
+                {
+                    askMessageRejectJoint(number, id);
+                }
+                else if (desc.Contains("заблокировать"))
+                {
+                    askMessageRejectJointBlock(number, id);
+                }
+                    
             }
         }
 
