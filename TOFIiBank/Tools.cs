@@ -605,7 +605,31 @@ namespace TOFIiBank
 
                     while (reader.Read())
                     {
-                        credits.Add(new CreditType(reader.GetInt32(0), reader.GetInt32(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetString(4), reader.GetInt32(5), reader.GetInt32(6)));
+                        credits.Add(new CreditType(reader.GetInt32(0), reader.GetFloat(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetString(4), reader.GetInt32(5), reader.GetInt32(6)));
+                    }
+                }
+            }
+            conn.Close();
+            return credits;
+        }
+
+        public static List<CreditType> getOneCreditTypes(int creditID)
+        {
+            List<CreditType> credits = new List<CreditType>();
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            string readAccounts = "SELECT * FROM creditType where credit_TypeID = "  + creditID +  ";";
+            cmd.CommandText = readAccounts;
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+
+                    while (reader.Read())
+                    {
+                        credits.Add(new CreditType(reader.GetInt32(0), reader.GetFloat(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetString(4), reader.GetInt32(5), reader.GetInt32(6)));
                     }
                 }
             }
