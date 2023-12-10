@@ -487,12 +487,12 @@ namespace TOFIiBank
                 }
                 MySqlConnection conn = DBUtils.GetDBConnection();
                 conn.Open();
-                string createDoc = "Insert into document (doc_type, ident_number) " + " values('" + docType + "', '" + documentNumberTextBox.Text + "');";
+                string createDoc = "Insert into Document (doc_type, ident_number) " + " values('" + docType + "', '" + documentNumberTextBox.Text + "');";
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conn;
                 cmd.CommandText = createDoc;
                 int execute = cmd.ExecuteNonQuery();
-                string getDocId = "Select documentID From document where ident_number ='" + documentNumberTextBox.Text + "' ;";
+                string getDocId = "Select documentID From Document where ident_number ='" + documentNumberTextBox.Text + "' ;";
                 cmd.CommandText = getDocId;
                 int docId = (int)cmd.ExecuteScalar();
                 string create = "Insert into user (name, surname, patronymic, email, password, documentID, birthday) " + " values('" + nameTextBox.Text + "', '" + surnameTextBox.Text + "', '" + patronymicTextBox.Text + "', '" + emailTextBox.Text + "', '" + passwordTextBox.Text + "', " + docId + ",'" + monthCalendar1.SelectionRange.Start.ToString("yyyy-MM-dd")  + "')";

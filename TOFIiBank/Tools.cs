@@ -41,7 +41,7 @@ namespace TOFIiBank
             conn.Open();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
-            string checkEmail = "SELECT EXISTS(SELECT * FROM document WHERE ident_number = '" + documentNumber + "');";
+            string checkEmail = "SELECT EXISTS(SELECT * FROM Document WHERE ident_number = '" + documentNumber + "');";
             cmd.CommandText = checkEmail;
             object exists = cmd.ExecuteScalar();
             conn.Close();
@@ -83,7 +83,7 @@ namespace TOFIiBank
             conn.Open();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
-            string checkEmail = "SELECT EXISTS(SELECT * FROM bancaccount WHERE account_number = '" + Convert.ToString(number) + "');";
+            string checkEmail = "SELECT EXISTS(SELECT * FROM bancAccount WHERE account_number = '" + Convert.ToString(number) + "');";
             cmd.CommandText = checkEmail;
             object exists = cmd.ExecuteScalar();
             conn.Close();
@@ -167,7 +167,7 @@ namespace TOFIiBank
             conn.Open();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
-            string checkEmail = "SELECT banc_accoutID FROM bancaccount WHERE account_number = '" + number + "';";
+            string checkEmail = "SELECT banc_accoutID FROM bancAccount WHERE account_number = '" + number + "';";
             cmd.CommandText = checkEmail;
             int accountID = (int)cmd.ExecuteScalar();
             conn.Close();
@@ -183,7 +183,7 @@ namespace TOFIiBank
             conn.Open();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
-            string checkEmail = "SELECT banc_accoutID FROM bancaccount WHERE account_number = '" + number + "';";
+            string checkEmail = "SELECT banc_accoutID FROM bancAccount WHERE account_number = '" + number + "';";
             cmd.CommandText = checkEmail;
             int accountID = (int)cmd.ExecuteScalar();
             conn.Close();
@@ -197,7 +197,7 @@ namespace TOFIiBank
             conn.Open();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
-            string checkEmail = "SELECT userID FROM bancaccount WHERE account_number = '" + number + "';";
+            string checkEmail = "SELECT userID FROM bancAccount WHERE account_number = '" + number + "';";
             cmd.CommandText = checkEmail;
             int accountID = (int)cmd.ExecuteScalar();
             conn.Close();
@@ -211,7 +211,7 @@ namespace TOFIiBank
             conn.Open();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
-            string checkNumber = "SELECT account_number FROM bancaccount WHERE banc_accoutID = '" + accountID + "';";
+            string checkNumber = "SELECT account_number FROM bancAccount WHERE banc_accoutID = '" + accountID + "';";
             cmd.CommandText = checkNumber;
             string accountNumber = (string)cmd.ExecuteScalar();
             conn.Close();
@@ -225,7 +225,7 @@ namespace TOFIiBank
             conn.Open();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
-            string checkEmail = "SELECT approval_type FROM bancaccount WHERE banc_accoutID = '" + accountID + "';";
+            string checkEmail = "SELECT approval_type FROM bancAccount WHERE banc_accoutID = '" + accountID + "';";
             cmd.CommandText = checkEmail;
             string accountApproval = (string)cmd.ExecuteScalar();
             conn.Close();
@@ -275,7 +275,7 @@ namespace TOFIiBank
         {
             MySqlConnection conn = DBUtils.GetDBConnection();
             conn.Open();
-            string createSession = "Insert into bancaccount (userID, balance, started_at, expires_at, banc_account_type, currency, status, account_number) " + " values(" + userId + ", 0.0, '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + DateTime.Now.AddYears(4).ToString("yyyy-MM-dd HH:mm:ss")
+            string createSession = "Insert into bancAccount (userID, balance, started_at, expires_at, banc_account_type, currency, status, account_number) " + " values(" + userId + ", 0.0, '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + DateTime.Now.AddYears(4).ToString("yyyy-MM-dd HH:mm:ss")
                 + "','single', '" + currency + "','" + "online', '" + Convert.ToString(number) + "');";
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
@@ -288,7 +288,7 @@ namespace TOFIiBank
         {
             MySqlConnection conn = DBUtils.GetDBConnection();
             conn.Open();
-            string createSession = "Insert into bancaccount (userID, balance, started_at, expires_at, banc_account_type, currency, status, account_number, possible_userID, approval_type) " + " values(" + userId + ", 0.0, '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + DateTime.Now.AddYears(4).ToString("yyyy-MM-dd HH:mm:ss")
+            string createSession = "Insert into bancAccount (userID, balance, started_at, expires_at, banc_account_type, currency, status, account_number, possible_userID, approval_type) " + " values(" + userId + ", 0.0, '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + DateTime.Now.AddYears(4).ToString("yyyy-MM-dd HH:mm:ss")
                 + "','joint', '" + currency + "','" + "waiting', '" + Convert.ToString(number) + "'," + getUserID(secondOwnerEmail) + ",'" + approvalType + "');";
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
@@ -308,7 +308,7 @@ namespace TOFIiBank
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
             int accountId = getAccountIDS(accountNumber);
-            string createJointAcc = "Update bancaccount set status ='online' where banc_accoutID = " + accountId + ";";
+            string createJointAcc = "Update bancAccount set status ='online' where banc_accoutID = " + accountId + ";";
             cmd.CommandText = createJointAcc;
             int execute = cmd.ExecuteNonQuery();
             deleteNotification(id);
@@ -322,7 +322,7 @@ namespace TOFIiBank
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
             int accountId = getAccountIDS(accountNumber);
-            string createJointAcc = "Update bancaccount set status ='blocked' where banc_accoutID = " + accountId + ";";
+            string createJointAcc = "Update bancAccount set status ='blocked' where banc_accoutID = " + accountId + ";";
             cmd.CommandText = createJointAcc;
             int execute = cmd.ExecuteNonQuery();
             deleteNotification(id);
@@ -345,7 +345,7 @@ namespace TOFIiBank
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
             int accountId = getAccountIDS(accountNumber);
-            string createJointAcc = "Update bancaccount set status ='blocked' where banc_accoutID = " + accountId + ";";
+            string createJointAcc = "Update bancAccount set status ='blocked' where banc_accoutID = " + accountId + ";";
             cmd.CommandText = createJointAcc;
             int execute = cmd.ExecuteNonQuery();
             deleteNotification(id);
@@ -375,7 +375,7 @@ namespace TOFIiBank
                 {
                     while (reader.Read())
                     {
-                        accounts.Add(new BancAccount(reader.GetInt32(0), reader.GetInt32(1), reader.GetFloat(3), reader.GetDateTime(5), reader.GetString(6), reader.GetString(8), reader.GetString(10), ""));
+                        accounts.Add(new BancAccount(reader.GetInt32(0), reader.GetInt32(1), reader.GetFloat(5), reader.GetDateTime(9), reader.GetString(3), reader.GetString(7), reader.GetString(4), ""));
                     }
                 }
             }
@@ -387,7 +387,7 @@ namespace TOFIiBank
                 {
                     while (reader.Read())
                     {
-                        accounts.Add(new BancAccount(reader.GetInt32(0), reader.GetInt32(1), reader.GetFloat(3), reader.GetDateTime(5), reader.GetString(6), reader.GetString(8), reader.GetString(10), getUserEmail(reader.GetInt32(2))));
+                        accounts.Add(new BancAccount(reader.GetInt32(0), reader.GetInt32(1), reader.GetFloat(5), reader.GetDateTime(9), reader.GetString(3), reader.GetString(7), reader.GetString(4), getUserEmail(reader.GetInt32(2))));
                     }
                 }
             }
@@ -399,7 +399,7 @@ namespace TOFIiBank
                 {
                     while (reader.Read())
                     {
-                        accounts.Add(new BancAccount(reader.GetInt32(0), reader.GetInt32(1), reader.GetFloat(3), reader.GetDateTime(5), reader.GetString(6), reader.GetString(8), reader.GetString(10), getUserEmail(reader.GetInt32(2))));
+                        accounts.Add(new BancAccount(reader.GetInt32(0), reader.GetInt32(1), reader.GetFloat(5), reader.GetDateTime(9), reader.GetString(3), reader.GetString(7), reader.GetString(4), getUserEmail(reader.GetInt32(2))));
                     }
                 }
             }
@@ -423,7 +423,7 @@ namespace TOFIiBank
 
                     while (reader.Read())
                     {
-                        notifications.Add(new Notification(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(5), reader.GetInt32(3), getAccountNumber(reader.GetInt32(3))));
+                        notifications.Add(new Notification(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(4), reader.GetInt32(3), getAccountNumber(reader.GetInt32(3))));
                     }
                 }
             }
@@ -448,8 +448,8 @@ namespace TOFIiBank
 
                     while (reader.Read())
                     {
-                        if(accounts.Exists(s=>s.bancAccountID == reader.GetInt32(3)) || accounts.Exists(s=>s.bancAccountID.Equals(reader.GetInt32(4)))){
-                            payments.Add(new Payment(reader.GetInt32(0), reader.GetFloat(1), reader.GetDateTime(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetString(5), reader.GetString(6), reader.GetString(7)));
+                        if(accounts.Exists(s=>s.bancAccountID == reader.GetInt32(4)) || accounts.Exists(s=>s.bancAccountID.Equals(reader.GetInt32(5)))){
+                            payments.Add(new Payment(reader.GetInt32(0), reader.GetFloat(1), reader.GetDateTime(2), reader.GetInt32(4), reader.GetInt32(5), reader.GetString(6), reader.GetString(7), reader.GetString(3)));
                         }
                         
                     }
@@ -465,10 +465,10 @@ namespace TOFIiBank
             conn.Open();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
-            string checkID = "SELECT banc_accoutID FROM bancaccount WHERE account_number = " + number + ";";
+            string checkID = "SELECT banc_accoutID FROM bancAccount WHERE account_number = " + number + ";";
             cmd.CommandText = checkID;
             int accountID = (int)cmd.ExecuteScalar();
-            string updateAccount = "UPDATE bancaccount SET balance = balance + 100 where banc_accoutID = " + accountID + ";";
+            string updateAccount = "UPDATE bancAccount SET balance = balance + 100 where banc_accoutID = " + accountID + ";";
             cmd.CommandText = updateAccount;
             int execute = cmd.ExecuteNonQuery();
             conn.Close();
@@ -479,7 +479,7 @@ namespace TOFIiBank
             conn.Open();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
-            string checkID = "SELECT banc_accoutID FROM bancaccount WHERE account_number = " + number + ";";
+            string checkID = "SELECT banc_accoutID FROM bancAccount WHERE account_number = " + number + ";";
             cmd.CommandText = checkID;
             int accountID = (int)cmd.ExecuteScalar();
             string updateAccount = "UPDATE bancaccount SET status = 'blocked' where banc_accoutID = " + accountID + ";";
