@@ -31,18 +31,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.payButton = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.sumLabel = new System.Windows.Forms.Label();
-            this.accountCurrency = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.accountType = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.accountCurrency = new System.Windows.Forms.Label();
+            this.sumLabel = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.sumTextBox = new System.Windows.Forms.TextBox();
+            this.secondOwnerPasswordTextBox = new System.Windows.Forms.TextBox();
+            this.secondOwnerPassword = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -73,12 +77,27 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.secondOwnerPasswordTextBox);
+            this.panel2.Controls.Add(this.secondOwnerPassword);
+            this.panel2.Controls.Add(this.sumTextBox);
+            this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.payButton);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 368);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1698, 295);
             this.panel2.TabIndex = 2;
+            // 
+            // payButton
+            // 
+            this.payButton.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.payButton.Location = new System.Drawing.Point(753, 106);
+            this.payButton.Name = "payButton";
+            this.payButton.Size = new System.Drawing.Size(176, 56);
+            this.payButton.TabIndex = 0;
+            this.payButton.Text = "Провести платёж";
+            this.payButton.UseVisualStyleBackColor = true;
+            this.payButton.Click += new System.EventHandler(this.payButton_Click);
             // 
             // panel3
             // 
@@ -97,73 +116,14 @@
             this.panel3.Size = new System.Drawing.Size(868, 316);
             this.panel3.TabIndex = 3;
             // 
-            // payButton
+            // accountType
             // 
-            this.payButton.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.payButton.Location = new System.Drawing.Point(778, 87);
-            this.payButton.Name = "payButton";
-            this.payButton.Size = new System.Drawing.Size(176, 56);
-            this.payButton.TabIndex = 0;
-            this.payButton.Text = "Провести платёж";
-            this.payButton.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(286, 118);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(270, 31);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(311, 47);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(216, 23);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Ваш счёт отправителя";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(243, 190);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(161, 23);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Сумма на счёте:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(243, 223);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(143, 23);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Валюта счёта:";
-            // 
-            // sumLabel
-            // 
-            this.sumLabel.AutoSize = true;
-            this.sumLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.sumLabel.Location = new System.Drawing.Point(432, 190);
-            this.sumLabel.Name = "sumLabel";
-            this.sumLabel.Size = new System.Drawing.Size(0, 23);
-            this.sumLabel.TabIndex = 4;
-            // 
-            // accountCurrency
-            // 
-            this.accountCurrency.AutoSize = true;
-            this.accountCurrency.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.accountCurrency.Location = new System.Drawing.Point(432, 223);
-            this.accountCurrency.Name = "accountCurrency";
-            this.accountCurrency.Size = new System.Drawing.Size(0, 23);
-            this.accountCurrency.TabIndex = 5;
+            this.accountType.AutoSize = true;
+            this.accountType.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.accountType.Location = new System.Drawing.Point(432, 256);
+            this.accountType.Name = "accountType";
+            this.accountType.Size = new System.Drawing.Size(0, 23);
+            this.accountType.TabIndex = 7;
             // 
             // label5
             // 
@@ -175,14 +135,63 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "Тип счёта:";
             // 
-            // accountType
+            // accountCurrency
             // 
-            this.accountType.AutoSize = true;
-            this.accountType.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.accountType.Location = new System.Drawing.Point(432, 256);
-            this.accountType.Name = "accountType";
-            this.accountType.Size = new System.Drawing.Size(0, 23);
-            this.accountType.TabIndex = 7;
+            this.accountCurrency.AutoSize = true;
+            this.accountCurrency.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.accountCurrency.Location = new System.Drawing.Point(432, 223);
+            this.accountCurrency.Name = "accountCurrency";
+            this.accountCurrency.Size = new System.Drawing.Size(0, 23);
+            this.accountCurrency.TabIndex = 5;
+            // 
+            // sumLabel
+            // 
+            this.sumLabel.AutoSize = true;
+            this.sumLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sumLabel.Location = new System.Drawing.Point(432, 190);
+            this.sumLabel.Name = "sumLabel";
+            this.sumLabel.Size = new System.Drawing.Size(0, 23);
+            this.sumLabel.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(243, 223);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(143, 23);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Валюта счёта:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(243, 190);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(161, 23);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Сумма на счёте:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(311, 47);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(216, 23);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Ваш счёт отправителя";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(286, 118);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(270, 31);
+            this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // panel4
             // 
@@ -204,6 +213,48 @@
             this.textBox1.TabIndex = 0;
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(764, 25);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(165, 23);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Сумма перевода";
+            // 
+            // sumTextBox
+            // 
+            this.sumTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sumTextBox.Location = new System.Drawing.Point(700, 61);
+            this.sumTextBox.MaxLength = 8;
+            this.sumTextBox.Name = "sumTextBox";
+            this.sumTextBox.Size = new System.Drawing.Size(299, 30);
+            this.sumTextBox.TabIndex = 1;
+            this.sumTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sumTextBox_KeyPress);
+            // 
+            // secondOwnerPasswordTextBox
+            // 
+            this.secondOwnerPasswordTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.secondOwnerPasswordTextBox.Location = new System.Drawing.Point(1083, 61);
+            this.secondOwnerPasswordTextBox.MaxLength = 40;
+            this.secondOwnerPasswordTextBox.Name = "secondOwnerPasswordTextBox";
+            this.secondOwnerPasswordTextBox.Size = new System.Drawing.Size(299, 30);
+            this.secondOwnerPasswordTextBox.TabIndex = 9;
+            this.secondOwnerPasswordTextBox.Visible = false;
+
+            // 
+            // secondOwnerPassword
+            // 
+            this.secondOwnerPassword.AutoSize = true;
+            this.secondOwnerPassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.secondOwnerPassword.Location = new System.Drawing.Point(1104, 25);
+            this.secondOwnerPassword.Name = "secondOwnerPassword";
+            this.secondOwnerPassword.Size = new System.Drawing.Size(260, 23);
+            this.secondOwnerPassword.TabIndex = 10;
+            this.secondOwnerPassword.Text = "Пароль второго владельца";
+            this.secondOwnerPassword.Visible = false;
+            // 
             // UC_Payments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -217,6 +268,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -242,5 +294,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox sumTextBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox secondOwnerPasswordTextBox;
+        private System.Windows.Forms.Label secondOwnerPassword;
     }
 }

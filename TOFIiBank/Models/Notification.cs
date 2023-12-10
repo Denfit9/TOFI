@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace TOFIiBank.Models
@@ -37,6 +38,20 @@ namespace TOFIiBank.Models
             else if (description == "block")
             {
                 descriptionFixed = "Пользователь " + Tools.getUserEmail(secondUserID) + " хочет заблокировать совместный счёт под номером: " + bancAccountNumber +  ". Ваше мнение?";
+            }
+            else if (description.StartsWith("send"))
+            {
+                string pattern = @"\((.*?)\)";
+
+                Match match = Regex.Match(description, pattern);
+
+                string extra = "";
+
+                if (match.Success)
+                {
+                    extra = match.Groups[1].Value;
+                }
+                descriptionFixed = "Пользователь " + Tools.getUserEmail(secondUserID) + " хочет перевести: "  + Tools.getTransactionBal(extra) + " со счёта " + bancAccountNumber + ". Ваше мнение?";
             }
             this.notificationID = notificationID;
             this.description = descriptionFixed;

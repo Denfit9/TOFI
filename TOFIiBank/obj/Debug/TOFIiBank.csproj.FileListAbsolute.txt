@@ -1,11 +1,8 @@
-C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\bin\Debug\TOFIiBank.exe.config
-C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\bin\Debug\TOFIiBank.exe
 C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\bin\Debug\TOFIiBank.pdb
 C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.csproj.AssemblyReference.cache
 C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.Properties.Resources.resources
 C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.csproj.GenerateResource.cache
 C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.csproj.CoreCompileInputs.cache
-C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.exe
 C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.pdb
 C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\bin\Debug\MetroSet UI.dll
 C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.csproj.CopyComplete
@@ -34,3 +31,8 @@ C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.UserContro
 C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.UserControls.UC_Notifications.resources
 C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.UserControls.UC_PaymentsHistory.resources
 C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.UserControls.UC_Settings.resources
+C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\bin\Debug\Newtonsoft.Json.dll
+C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\bin\Debug\Newtonsoft.Json.xml
+C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\bin\Debug\TOFIiBank.exe.config
+C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\bin\Debug\TOFIiBank.exe
+C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.exe

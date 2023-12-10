@@ -40,6 +40,11 @@ namespace TOFIiBank.Models
             {
                 transactionTypeFixed = "Пополнение";
             }
+            else if(transactionType == "transfered")
+            {
+                transactionTypeFixed = "Перевод";
+                summ *= -1;
+            }
             this.transactionID = transactionID;
             this.summ = summ;
             this.date = fixedDate;

@@ -95,6 +95,28 @@ namespace TOFIiBank.UserControls
             }
         }
 
+        public void askMessageConfirmJointSend(string number, string id)
+        {
+            DialogResult result = MessageBox.Show(
+                "Одобрить операцию?",
+                "Вы уверены?",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button1);
+            if (result == DialogResult.Yes)
+            {
+
+                Tools.proceedMoneyTransferSuccess(Convert.ToString(Tools.getTransactionIDFromNotificationNumber(Convert.ToString(id))), id);
+                MessageBox.Show("Операция одобрена", "Одобрено", MessageBoxButtons.OK, MessageBoxIcon.None);
+                List<Notification> notificaitions = Tools.getAllNotifications(Program.userID);
+                dataGridView1.DataSource = notificaitions;
+            }
+            else if (result == DialogResult.No)
+            {
+
+            }
+        }
+
         public void askMessageRejectJoint(string number, string id)
         {
             DialogResult result = MessageBox.Show(
@@ -154,9 +176,11 @@ namespace TOFIiBank.UserControls
                 {
                     askMessageConfirmJointBlock(number, id);
                 }
-
+                else if (desc.Contains("перевести"))
+                {
+                    askMessageConfirmJointSend(number, id);
+                }
             }
-
             if (e.ColumnIndex == 4)
             {
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
@@ -170,6 +194,10 @@ namespace TOFIiBank.UserControls
                 else if (desc.Contains("заблокировать"))
                 {
                     askMessageRejectJointBlock(number, id);
+                }
+                else if (desc.Contains("перевести"))
+                {
+                    Tools.proceedMoneyTransferReject(Convert.ToString(Tools.getTransactionIDFromNotificationNumber(Convert.ToString(id))), id);
                 }
                     
             }

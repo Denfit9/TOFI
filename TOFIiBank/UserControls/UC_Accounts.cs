@@ -127,7 +127,7 @@ namespace TOFIiBank.UserControls
             {
                 long number = 0;
                 number = Tools.LongRandom(1000000000000000, 9999999999999999, new Random());
-                while (Tools.checkAccountExistence(number))
+                while (Tools.checkAccountExistence(number) || number <=0)
                 {
                     number = Tools.LongRandom(1000000000000000, 9999999999999999, new Random());
                 }
@@ -293,7 +293,7 @@ namespace TOFIiBank.UserControls
                         {
                             approvalType = "password";
                         }
-                        else if(currencyComboBox.SelectedIndex == 2)
+                        else if(confirmationComboBox.SelectedIndex == 2)
                         {
                             approvalType="notification";
                         }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TOFIiBank.Models;
 
 namespace TOFIiBank.UserControls
 {
@@ -26,6 +27,8 @@ namespace TOFIiBank.UserControls
         public UC_Credist()
         {
             InitializeComponent();
+            List<CreditType> accounts = Tools.getAllCreditTypes();
+            dataGridView1.AutoGenerateColumns = false;
         }
     }
 }
