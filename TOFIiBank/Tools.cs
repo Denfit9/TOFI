@@ -249,6 +249,20 @@ namespace TOFIiBank
             return accountID;
         }
 
+        public static int getAccountBalance(string number)
+        {
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            string checkEmail = "SELECT balance FROM bancAccount WHERE account_number = '" + number + "';";
+            cmd.CommandText = checkEmail;
+            int accountID = Convert.ToInt32(cmd.ExecuteScalar());
+            conn.Close();
+
+            return accountID;
+        }
+
         public static int getAccountFirstOwnerS(string number)
         {
             MySqlConnection conn = DBUtils.GetDBConnection();
@@ -258,6 +272,20 @@ namespace TOFIiBank
             string checkEmail = "SELECT userID FROM bancAccount WHERE account_number = '" + number + "';";
             cmd.CommandText = checkEmail;
             int accountID = (int)cmd.ExecuteScalar();
+            conn.Close();
+
+            return accountID;
+        }
+
+        public static int openCreditsCount(int userID)
+        {
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            string checkEmail = "SELECT COUNT(*) FROM credit WHERE userID = " + userID + " and status = 'opened';";
+            cmd.CommandText = checkEmail;
+            int accountID = Convert.ToInt32(cmd.ExecuteScalar());
             conn.Close();
 
             return accountID;
@@ -329,6 +357,7 @@ namespace TOFIiBank
             conn.Close();
         }
 
+
         public static void createTransaction(string sum, string transactionType, int bancAccoutId, int receiverId, string transactionMessage, string transactionStatus)
         {
             MySqlConnection conn = DBUtils.GetDBConnection();
@@ -352,6 +381,23 @@ namespace TOFIiBank
             cmd.Connection = conn;
             cmd.CommandText = createTransaction;
             int execute = cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public static void openCredit(int userID, string receiverAccID, int sum, int final_sum, int months, int monthPayment, string creditName)
+        {
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            DateTime datetime = DateTime.Now;
+            string openCredit = "Insert into credit(userID,sum,started_at, status, credit_name, final_sum, months, month_payment) values(" + userID + ", " + sum + ", '" + datetime.ToString("yyyy-MM-dd H:mm:ss") + "', 'opened', '" + creditName + "', " + final_sum + ", " + months + "," + monthPayment + ");";
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = openCredit;
+            int execute = cmd.ExecuteNonQuery();
+            createTransactionSys(sum, "added", Convert.ToInt32(receiverAccID), Convert.ToInt32(receiverAccID), "credit", "completed");
+            string updateAccount = "UPDATE bancAccount SET balance = balance + " + sum + " WHERE banc_accoutID = " + receiverAccID + ";";
+            cmd.CommandText = updateAccount;
+            int execute3 = cmd.ExecuteNonQuery();
             conn.Close();
         }
 
@@ -444,7 +490,32 @@ namespace TOFIiBank
             return result;
         }
 
-        public static List<BancAccount> getAllAccount(int userID)
+        public static List<BancAccount> getAllAccountForCredit(int userID)
+        {
+            List<BancAccount> accounts = new List<BancAccount>();
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            string readAccounts = "SELECT * FROM bancAccount WHERE userID = " + userID + " and status ='online' and banc_account_type ='single' and currency = 'BYN' and expires_at >= NOW()" + ";";
+            cmd.CommandText = readAccounts;
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        accounts.Add(new BancAccount(reader.GetInt32(0), reader.GetInt32(1), reader.GetFloat(5), reader.GetDateTime(9), reader.GetString(3), reader.GetString(7), reader.GetString(4), ""));
+                    }
+                }
+            }
+            conn.Close();
+            return accounts;
+        }
+
+
+
+            public static List<BancAccount> getAllAccount(int userID)
         {
             List<BancAccount> accounts = new List<BancAccount>();
             MySqlConnection conn = DBUtils.GetDBConnection();
@@ -587,6 +658,60 @@ namespace TOFIiBank
             }
             conn.Close();
             return payments;
+        }
+
+        public static List<Credit> getAllCredits(int userID)
+        {
+            List<Credit> credits = new List<Credit>();
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            string readAccounts = "SELECT * FROM credit where userId = " + userID+ ";";
+            cmd.CommandText = readAccounts;
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+
+                    while (reader.Read())
+                    {
+                        
+                            credits.Add(new Credit(reader.GetInt32(0), reader.GetInt32(1), reader.GetInt32(2), reader.GetDateTime(3), reader.GetString(5), reader.GetString(6), reader.GetInt32(7), reader.GetInt32(8), reader.GetInt32(9)));
+                        
+
+                    }
+                }
+            }
+            conn.Close();
+            return credits;
+        }
+
+        public static List<Credit> getOneCredit(int creditID)
+        {
+            List<Credit> credits = new List<Credit>();
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            string readAccounts = "SELECT * FROM credit where creditId = " + creditID + ";";
+            cmd.CommandText = readAccounts;
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+
+                    while (reader.Read())
+                    {
+
+                        credits.Add(new Credit(reader.GetInt32(0), reader.GetInt32(1), reader.GetInt32(2), reader.GetDateTime(3), reader.GetString(5), reader.GetString(6), reader.GetInt32(7), reader.GetInt32(8), reader.GetInt32(9)));
+
+
+                    }
+                }
+            }
+            conn.Close();
+            return credits;
         }
 
         public static List<CreditType> getAllCreditTypes()
@@ -828,6 +953,39 @@ namespace TOFIiBank
             int execute2 = cmd.ExecuteNonQuery();
             createTransaction(sumSender, "added", accountID2, accountID, "", "completed");
             createTransaction(sum, "transfered", accountID2, accountID, "", "completed");
+            conn.Close();
+        }
+
+        public static void PayForCredit(string numberSender, int sum, int creditNumber)
+        {
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            string checkID = "SELECT banc_accoutID FROM bancAccount WHERE account_number = " + numberSender + ";";
+            cmd.CommandText = checkID;
+            int accountID = (int)cmd.ExecuteScalar();
+            string checkCreditBalance = "SELECT Final_sum FROM credit WHERE creditID = " + creditNumber + ";";
+            cmd.CommandText = checkCreditBalance;
+            int balance = Convert.ToInt32(cmd.ExecuteScalar());
+            if(balance == sum)
+            {
+                string updateAccount2 = "UPDATE credit SET final_sum = final_sum - " + sum + " and status = 'closed' where creditID = " + creditNumber + ";";
+                cmd.CommandText = updateAccount2;
+                int execute2 = cmd.ExecuteNonQuery();
+            }
+            else
+            {
+                string updateAccount2 = "UPDATE credit SET final_sum = final_sum - " + sum + " where creditID = " + creditNumber + ";";
+                cmd.CommandText = updateAccount2;
+                int execute2 = cmd.ExecuteNonQuery();
+            }
+            string updateAccount3 = "UPDATE bancAccount SET balance = balance - " + sum + " where banc_accoutID = " + accountID + ";";
+            cmd.CommandText = updateAccount3;
+            int execute3 = cmd.ExecuteNonQuery();
+
+            createTransaction(Convert.ToString(sum), "transfered", accountID, accountID, "credit pay", "completed");
+
             conn.Close();
         }
 

@@ -19,9 +19,9 @@ namespace TOFIiBank
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Banking());
-            //Application.Run(new Login());
-            /*if(userID != -1)
+            //Application.Run(new Banking());
+            Application.Run(new Login());
+            if(userID != -1)
             {
                 Application.Run(new Banking());
             }
@@ -30,10 +30,10 @@ namespace TOFIiBank
             if(userID != -1)
             {
                 Tools.deleteSession(userID);
-            }*/
+            }
         }
 
-        public static int userID = 2;
+        public static int userID = -1;
         public static string userEmail = Tools.getUserEmail(userID);
         public static int requiredWindow = -1;
     }

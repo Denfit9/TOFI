@@ -36,3 +36,7 @@ C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\bin\Debug\Newtonsoft.Json.xml
 C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\bin\Debug\TOFIiBank.exe.config
 C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\bin\Debug\TOFIiBank.exe
 C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.exe
+C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\bin\Debug\TOFIiBank.exe.manifest
+C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\bin\Debug\TOFIiBank.application
+C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.exe.manifest
+C:\Users\d0306\Documents\Tofi\TOFIiBank\TOFIiBank\obj\Debug\TOFIiBank.application

@@ -32,7 +32,17 @@ namespace TOFIiBank.Models
                 transactionMessageFixed = "Пополнение системой";
                 bancAccountNumber = "";
             }
-            if(transactionStatus == "completed")
+            else if(transactionMessage == "credit")
+            {
+                transactionMessageFixed = "Пополнение от кредита";
+                bancAccountNumber = "";
+            }
+            else if (transactionMessage == "credit pay")
+            {
+                transactionMessageFixed = "Оплата за кредит";
+                bancAccountReceiverNumber = "";
+            }
+            if (transactionStatus == "completed")
             {
                 transactionStatusFixed = "Проведена";
             }
